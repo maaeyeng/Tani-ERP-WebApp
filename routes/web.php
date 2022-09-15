@@ -17,5 +17,21 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('dashboard', 'App\Http\Controllers\UserController@dashboard')->middleware('auth');
 
 Route::resource('/products', ProductController::class);
+Route::get('/pos', function(){
+    return "POS system";
+});
+Route::get('/erp', function(){
+    return "ERP System";
+});
+Route::get('/shop', function(){
+    return "Web Shop System";
+});
+Route::get('/hr', function(){
+    return "HR System";
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
